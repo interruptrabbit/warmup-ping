@@ -1,0 +1,31 @@
+name: step-15-450s
+"on":
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Task 1: System info"
+        run: uname -srm
+      - name: "Pause 1"
+        run: sleep 146
+      - name: "Task 2: Whoami"
+        run: whoami && pwd
+      - name: "Task 3: Echo greeting"
+        run: "echo \"hello step 15 (450s)\""
+      - name: "Pause 2"
+        run: sleep 146
+      - name: "Task C: gcc puts_c"
+        run: |
+          cat > /tmp/h.c <<'C'
+          #include <stdio.h>
+          int main(void){ puts("gcc ok step 15"); return 0; }
+          C
+          gcc /tmp/h.c -o /tmp/h && /tmp/h
+      - name: "Task py"
+        run: "python3 -c \"print('len', len('warmup'))\""
+      - name: "Pause 3"
+        run: sleep 146
+      - name: "Task marker r15"
+        run: echo marker=round-15-dur-450
