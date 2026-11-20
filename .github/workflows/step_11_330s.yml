@@ -1,0 +1,31 @@
+name: step-11-330s
+"on":
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Task 1: System info"
+        run: uname -srm
+      - name: "Pause 1"
+        run: sleep 106
+      - name: "Task 2: Whoami"
+        run: whoami && pwd
+      - name: "Task 3: Echo greeting"
+        run: "echo \"hello step 11 (330s)\""
+      - name: "Pause 2"
+        run: sleep 106
+      - name: "Task C: gcc hello_c"
+        run: |
+          cat > /tmp/h.c <<'C'
+          #include <stdio.h>
+          int main(void){ printf("round 11 hello from c\n"); return 0; }
+          C
+          gcc /tmp/h.c -o /tmp/h && /tmp/h
+      - name: "Task py"
+        run: "python3 -c \"print('len', len('warmup'))\""
+      - name: "Pause 3"
+        run: sleep 106
+      - name: "Task marker r11"
+        run: echo marker=round-11-dur-330
