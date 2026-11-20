@@ -1,0 +1,30 @@
+name: simple
+on:
+  workflow_dispatch:
+
+jobs:
+  simple:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo hello
+        run: echo "hello"
+
+      - name: Compile and run hello.c with gcc
+        run: |
+          cat > hello.c <<'C'
+          #include <stdio.h>
+          int main(void) {
+            printf("hello from gcc\n");
+            return 0;
+          }
+          C
+          gcc --version | head -1
+          gcc hello.c -o hello
+          ./hello
+
+      - name: A few tiny commands
+        run: |
+          echo "user=$(whoami)"
+          uname -srm
+          date -u
+          echo "done"
