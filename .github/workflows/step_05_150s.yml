@@ -1,0 +1,31 @@
+name: step-05-150s
+"on":
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Task 1: Echo greeting"
+        run: "echo \"hello step 5 (150s)\""
+      - name: "Pause 1"
+        run: sleep 46
+      - name: "Task 2: Show time"
+        run: "date -u +'%Y-%m-%dT%H:%M:%SZ'"
+      - name: "Task 3: System info"
+        run: uname -srm
+      - name: "Pause 2"
+        run: sleep 46
+      - name: "Task C: gcc puts_c"
+        run: |
+          cat > /tmp/h.c <<'C'
+          #include <stdio.h>
+          int main(void){ puts("gcc ok step 5"); return 0; }
+          C
+          gcc /tmp/h.c -o /tmp/h && /tmp/h
+      - name: "Task py"
+        run: "python3 -c \"print('py step 5')\""
+      - name: "Pause 3"
+        run: sleep 46
+      - name: "Task marker r5"
+        run: echo marker=round-5-dur-150
