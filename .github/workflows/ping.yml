@@ -1,0 +1,12 @@
+name: ping
+on:
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping
+        run: echo "ping $(date -u) user=${GITHUB_ACTOR}"
+      - name: Short pause
+        run: sleep 20
