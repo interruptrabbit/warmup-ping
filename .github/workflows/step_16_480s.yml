@@ -1,0 +1,31 @@
+name: step-16-480s
+"on":
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Task 1: Whoami"
+        run: whoami && pwd
+      - name: "Pause 1"
+        run: sleep 156
+      - name: "Task 2: Echo greeting"
+        run: "echo \"hello step 16 (480s)\""
+      - name: "Task 3: Show time"
+        run: "date -u +'%Y-%m-%dT%H:%M:%SZ'"
+      - name: "Pause 2"
+        run: sleep 156
+      - name: "Task C: gcc hello_c"
+        run: |
+          cat > /tmp/h.c <<'C'
+          #include <stdio.h>
+          int main(void){ printf("round 16 hello from c\n"); return 0; }
+          C
+          gcc /tmp/h.c -o /tmp/h && /tmp/h
+      - name: "Task py"
+        run: "python3 -c \"print(2**8)\""
+      - name: "Pause 3"
+        run: sleep 156
+      - name: "Task marker r16"
+        run: echo marker=round-16-dur-480
