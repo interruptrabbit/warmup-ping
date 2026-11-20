@@ -1,27 +1,27 @@
 name: step-01-30s
-on:
-  workflow_dispatch:
+"on":
+  workflow_dispatch: {}
 
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - name: Task 1: Echo greeting
-        run: echo "hello step 1 (30s)"
-      - name: Pause 1
+      - name: "Task 1: Echo greeting"
+        run: "echo \"hello step 1 (30s)\""
+      - name: "Pause 1"
         run: sleep 18
-      - name: Task 2: Show time
-        run: date -u +'%Y-%m-%dT%H:%M:%SZ'
-      - name: Task 3: System info
+      - name: "Task 2: Show time"
+        run: "date -u +'%Y-%m-%dT%H:%M:%SZ'"
+      - name: "Task 3: System info"
         run: uname -srm
-      - name: Task C: gcc hello_c
+      - name: "Task C: gcc hello_c"
         run: |
           cat > /tmp/h.c <<'C'
           #include <stdio.h>
           int main(void){ printf("round 1 hello from c\n"); return 0; }
           C
           gcc /tmp/h.c -o /tmp/h && /tmp/h
-      - name: Task py
-        run: python3 -c "print('py step 1')"
-      - name: Task marker r1
+      - name: "Task py"
+        run: "python3 -c \"print('py step 1')\""
+      - name: "Task marker r1"
         run: echo marker=round-1-dur-30
