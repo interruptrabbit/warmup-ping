@@ -1,0 +1,31 @@
+name: step-13-390s
+"on":
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Task 1: Echo greeting"
+        run: "echo \"hello step 13 (390s)\""
+      - name: "Pause 1"
+        run: sleep 126
+      - name: "Task 2: Show time"
+        run: "date -u +'%Y-%m-%dT%H:%M:%SZ'"
+      - name: "Task 3: System info"
+        run: uname -srm
+      - name: "Pause 2"
+        run: sleep 126
+      - name: "Task C: gcc sum_c"
+        run: |
+          cat > /tmp/h.c <<'C'
+          #include <stdio.h>
+          int main(void){ int a=7,b=6; printf("sum=%d\n",a+b); return 0; }
+          C
+          gcc /tmp/h.c -o /tmp/h && /tmp/h
+      - name: "Task py"
+        run: "python3 -c \"print('py step 13')\""
+      - name: "Pause 3"
+        run: sleep 126
+      - name: "Task marker r13"
+        run: echo marker=round-13-dur-390
