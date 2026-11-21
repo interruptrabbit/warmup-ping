@@ -1,0 +1,31 @@
+name: step-19-570s
+"on":
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Task 1: System info"
+        run: uname -srm
+      - name: "Pause 1"
+        run: sleep 186
+      - name: "Task 2: Whoami"
+        run: whoami && pwd
+      - name: "Task 3: Echo greeting"
+        run: "echo \"hello step 19 (570s)\""
+      - name: "Pause 2"
+        run: sleep 186
+      - name: "Task C: gcc double_c"
+        run: |
+          cat > /tmp/h.c <<'C'
+          #include <stdio.h>
+          int main(void){ printf("double=%d\n", 21*2); return 0; }
+          C
+          gcc /tmp/h.c -o /tmp/h && /tmp/h
+      - name: "Task py"
+        run: "python3 -c \"print('len', len('warmup'))\""
+      - name: "Pause 3"
+        run: sleep 186
+      - name: "Task marker r19"
+        run: echo marker=round-19-dur-570
